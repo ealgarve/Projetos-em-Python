@@ -21,4 +21,4 @@ while len(lista_primo) <= 19: # cria lista de 20 numeros
         proximo += 1
     pass
     
-print('lista de primos: {}' .format(lista_primo))
+print(f'lista de primos: {lista_primo}')
