@@ -9,11 +9,12 @@ body {
 }
 
 main {
-    background-color: white;
+    background-color: rgb(250, 200, 153);
     width: 700px;
     margin: auto;
     padding: 10px;
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.473);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.808);
+    text-align: justify;
 }
 
 h1 {
@@ -29,6 +30,7 @@ h2 {
 img.lado {
     float: right;
     size: 100px;
+    margin: 10px;
 }
 
 a {
