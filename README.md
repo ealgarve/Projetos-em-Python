@@ -4,4 +4,4 @@
 # PROJETOS
 
 #   Mais informações no site:
-https://ealgarve.github.io/Projetos-em-Python/
+https://ealgarve.github.io/Projetos-em-Python/pagina_do_projeto/
