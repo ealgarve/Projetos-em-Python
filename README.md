@@ -3,7 +3,5 @@
 
 # PROJETOS
 
-#   Primos
-    num_primos: ainda não esta funcionando corretamente. 
-    diretrizes do projeto: estou tentando criar este código sem ver outro codigo pronto.
-
+#   Mais informações no site:
+https://ealgarve.github.io/Projetos-em-Python/
