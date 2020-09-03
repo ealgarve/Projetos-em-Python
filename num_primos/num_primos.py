@@ -4,6 +4,8 @@ Conceito:
 Um número é classificado como primo se ele é maior do que um e é
 divisível apenas por um e por ele mesmo. Apenas números naturais
 são classificados como primos.
+--> Fiz diferente do enunciado. Este código mostra os números
+primos de 0 a 100(ou mais).
 '''
 primos = []
 div = 0
