@@ -1,7 +1,12 @@
-def placar(jogador1 = 0, jogador2 = 0, nome1 = 'homem', nome2 = 'máquina'):
-    print('-'*30)
-    print(f'# {nome1} {jogador1} x {jogador2} {nome2} #')
-    print('-'*30)
+def placar(rodada = 1, nome1 = 'homem', nome2 = 'máquina', vencedor = ''):
+    if rodada == 1:
+        jogador1 = jogador2 = 0
+    else:
+        if vencedor == nome1:
+            jogador1 += 1
+        print('-'*30)
+        print(f'# {nome1} {jogador1} x {jogador2} {nome2} #')
+        print('-'*30)
 
 def sorteio(humano = 'papel'):
     import random
@@ -57,13 +62,13 @@ def menu():
     return homem
             
 
-while True:
+'''while True:
     if menu() == 'sair':
         break
     else:
         print('-'*15)
         print(menu())
-        print('-'*15)
+        print('-'*15)'''
 
 #placar(5, 3, 'Elias', 'Pati')
 #sorteio('spock')
