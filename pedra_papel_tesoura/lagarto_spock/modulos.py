@@ -1,4 +1,4 @@
-def placar(rodada = 1, nome1 = 'homem', nome2 = 'máquina', vencedor = ''):
+def placar(sorteio, rodada = 1):
     if rodada == 1:
         jogador1 = jogador2 = 0
     else:
@@ -13,27 +13,22 @@ def sorteio(humano = 'papel'):
     maquina = random.choice(['pedra', 'papel', 'tesoura', 'lagarto', 'spock'])
     if maquina != humano:
         if humano == 'pedra' and (maquina == 'lagarto' or maquina == 'tesoura'):
-            print(f'Humano escolheu [{humano}] X Máquina escolheu [{maquina}]')
-            print('Humano venceu.')
+            vencedor = 'homem'
         elif humano == 'papel' and (maquina == 'pedra' or maquina == 'spock'):
-            print(f'Humano escolheu [{humano}] X Máquina escolheu [{maquina}]')
-            print('Humano venceu')
+            vencedor = 'homem'
         elif humano == 'tesoura' and (maquina == 'lagarto' or maquina == 'papel'):
-            print(f'Humano escolheu [{humano}] X Máquina escolheu [{maquina}]')
-            print('Humano venceu')
+            vencedor = 'homem'
         elif humano == 'lagarto' and (maquina == 'spock' or maquina == 'papel'):
-            print(f'Humano escolheu [{humano}] X Máquina escolheu [{maquina}]')
-            print('Humano venceu')
+            vencedor = 'homem'
         elif humano == "spock" and (maquina == 'pedra' or maquina == 'tesoura'):
-            print(f'Humano escolheu [{humano}] X Máquina escolheu [{maquina}]')
-            print('Humano venceu')
+            vencedor = 'homem'
         else:
-            print(f'Humano escolheu [{humano}] X Máquina escolheu [{maquina}]')
-            print('Máquina Venceu')
+            vencedor = 'robo'
     else:
-        print(f'Humano escolheu [{humano}] X Máquina escolheu [{maquina}]')
-        print('Houve um empate')
+        vencedor = 'empate'
+    return humano, maquina, vencedor
 
+print(list(sorteio('pedra')))
 
 def menu():
     print('''Digite:
