@@ -1,26 +1,19 @@
-def placar(sorteio, rodada = 1):
-    if rodada == 1:
-        jogador1 = jogador2 = 0
-        rodada += 1
-    if sorteio[2] == 'homem':
-        jogador1 += 1
-    elif sorteio[2] == 'maquina':
-        jogador2 += 1
-    else:
-        print('Algo deu Errado.')
-    print('-'*30)
-    print(f'Você escolheu {sorteio[0]} e a máquina escolheu {sorteio[1]}')
-    print(f'Logo {sorteio[2]} venceu')
-    print('-'*30)
-    print(f'# Homem {jogador1} x {jogador2} Máquina #')
-    print('-'*30)
+def placar_(sorteio):
+        global pontos_h
+        global pontos_m
+        print('-'*30)
+        print(f'Você escolheu {sorteio[0]} e a máquina escolheu {sorteio[1]}')
+        print(f'Logo {sorteio[2]} venceu')
+        print('-'*30)
+        if sorteio[2] == 'homem':
+            pontos_h += 1
+        elif sorteio[2] == 'maquina':
+            pontos_m += 1
+        print(f'# Homem {pontos_h} x {pontos_m} Máquina #')
+        print('-'*30)
+        
 
-from time import sleep
-placar(['pedra', 'papel', 'maquina'])
-sleep(1)
-placar(['spock', 'lagarto', 'maquina'])
-sleep(1)
-placar(['perda', 'lagarto', 'homem'])
+
 
 def sorteio(humano = 'papel'):
     import random
@@ -39,10 +32,9 @@ def sorteio(humano = 'papel'):
         else:
             vencedor = 'maquina'
     else:
-        vencedor = 'empate'
+        vencedor = 'empatou'
     return humano, maquina, vencedor
 
-#print(list(sorteio('pedra')))
 
 def menu():
     print('''Digite:
@@ -71,13 +63,3 @@ def menu():
     return homem
             
 
-'''while True:
-    if menu() == 'sair':
-        break
-    else:
-        print('-'*15)
-        print(menu())
-        print('-'*15)'''
-
-#placar(5, 3, 'Elias', 'Pati')
-#sorteio('spock')
