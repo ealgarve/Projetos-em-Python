@@ -16,4 +16,12 @@ def desempacotar(): # 1. Unpacking Operators (* and **)
     print(f'Primeira letra: {first}\n', 'Miolo: ', *middle  , f'\nÚltima letra: {last}')
 
 
-desempacotar()
+#desempacotar()
+
+def desemp_dic():
+    dicionario = {'nome' : 'Elias', 'idade' : 48, 'sexo' : 'M'}
+    print(f'desempacotando um dicionário:\n{dicionario}')
+    print(*dicionario)
+    print(dicionario['nome'])
+
+desemp_dic()
