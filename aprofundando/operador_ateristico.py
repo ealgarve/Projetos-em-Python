@@ -1,5 +1,7 @@
 # Dicas de: https://towardsdatascience.com/three-concepts-to-become-a-better-python-programmer-b5808b7abedc
-def desempacotar(): # 1. Unpacking Operators (* and **)
+
+# 1 - Unpacking Operators (* and **)
+def desempacotar(): 
     num_list = [1, 2, 3, 4, 5]
     num_list2 = [6, 7, 8, 9]
     nova_list = [*num_list, *num_list2]
@@ -24,4 +26,32 @@ def desemp_dic():
     print(*dicionario)
     print(dicionario['nome'])
 
-desemp_dic()
+# desemp_dic()
+
+# 2 - args and kwargs
+
+def pack():
+    *names, = 'pedra', 'papel', 'tesoura'
+    print(names)
+
+#pack()
+
+def name_tuple(*argumentos):
+    return argumentos
+
+#ve_tupla = name_tuple('pedra', 'papel', 'tesoura', 'lagarto', 'spock')
+#print(ve_tupla)
+
+def name_dic(**kwargumentos):
+    return kwargumentos
+
+#ve_dic = name_dic(nome = 'Elias', sobrenome = 'Machado', sobresobrenome = 'Algarve')
+#for i, n in enumerate(ve_dic):
+#    print(i, *ve_dic[n], ve_dic[n])
+
+#3. Iteration, Iterables and Iterators
+def eh_iter():
+    num_list = [1, 2, 3, 4, 5]
+    print(dir(num_list)) # retorna os atributos validos do argumento
+
+eh_iter()
