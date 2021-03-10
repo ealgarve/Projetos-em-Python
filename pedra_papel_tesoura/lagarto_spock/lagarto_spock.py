@@ -28,7 +28,7 @@ while True:
     placar(sorteio(menu()))
     print('-'*30)
     sleep(1)
-    if rodada == 5 or menu() == 'sair': 
+    if rodada == 3 or menu() == 'sair': 
         break
     rodada += 1    
 

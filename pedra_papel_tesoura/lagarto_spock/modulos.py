@@ -43,6 +43,7 @@ def menu():
 [3] para "Tesoura"
 [4] para "Lagarto"
 [5] para "Spock"
+[R] para exibir as regras do jogo
 [S] Sair''')
     homem = str(input('Digite sua opção: ')).lower()
     if homem == '1':
@@ -55,11 +56,25 @@ def menu():
         homem = 'lagarto'
     elif homem == '5':
         homem = 'spock'
+    elif homem == 'r':
+        homem = regras()
     elif homem == 's':
         homem = 'sair'
     else:
-        if homem not in '12345s':
+        if homem not in '12345rs':
             homem = 'ERRO - digite uma opção correta'
     return homem
             
+def regras():
+    return '''Regras de quem ganha:
+    --> Tesoura corta Papel
+    --> Papel cobre a Pedra
+    --> Pedra esmaga o Lagarto
+    --> Spock quebra a Tesoura
+    --> Tesoura decapita o Lagarto
+    --> Lagarvto come o Papel
+    --> Papel refuta o Spock
+    --> Spock vaporiza a Pedra
+    --> Rocha esmaga a Tesoura'''
+    
 
