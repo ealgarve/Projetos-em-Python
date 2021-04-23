@@ -33,9 +33,18 @@ class opera_matriz:
         return self.matriz
 
     def soma_matriz(self, B_matriz):
-        soma = self.matriz[0][0] + B_matriz[0][0]
-        print(f'Em construção, mas o primeiro termo da soma é {soma}')
-        #return matriz_soma
+        m_linha = []
+        m_soma = []
+        for linha in range(0, len(self.matriz)):
+            for coluna in range(0, len(self.matriz[0])):
+                soma = self.matriz[linha][coluna] + B_matriz[linha][coluna]
+                m_linha.append(soma)
+
+            m_soma.append(m_linha)
+            m_linha = []
+        #soma = self.matriz[0][0] + B_matriz[0][0]
+        #print(f'Em construção, mas o primeiro termo da soma é {soma}')
+        return m_soma
 
 print('Entre com os elementos da Matriz A:\n')
 matriz_A = opera_matriz()
@@ -45,5 +54,5 @@ print('\nAqui esta a Matriz A\n')
 matriz_A.mostra_matriz()
 print('\nAqui esta a Matriz B\n')
 matriz_B.mostra_matriz()
-print('\nAqui esta a soma do elemento A11:\n')
-matriz_A.soma_matriz(matriz_B.retorna_matriz())
+print('\nM_A + M_B:\n')
+print(matriz_A.soma_matriz(matriz_B.retorna_matriz()))
