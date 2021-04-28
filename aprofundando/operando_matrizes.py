@@ -29,6 +29,13 @@ class opera_matriz:
             for coluna in range(0, len(self.matriz[0])):
                 print(f'a[{linha + 1}, {coluna + 1}] = {self.matriz[linha][coluna]}')
 
+    def m_estrutura(self):
+        print(f'Dimenção da Matriz: {len(self.matriz)} x {len(self.matriz[0])}')
+        for linha in range(0, len(self.matriz)):
+            for coluna in range(0, len(self.matriz[0])):
+                print(f'{self.matriz[linha][coluna]:<5}', end="")
+            print('\n')
+
     def retorna_matriz(self):
         return self.matriz
 
@@ -42,8 +49,8 @@ class opera_matriz:
 
             m_soma.append(m_linha)
             m_linha = []
-        #soma = self.matriz[0][0] + B_matriz[0][0]
-        #print(f'Em construção, mas o primeiro termo da soma é {soma}')
+        
+        #return self.__class__() # m_soma
         return m_soma
 
 print('Entre com os elementos da Matriz A:\n')
@@ -51,8 +58,9 @@ matriz_A = opera_matriz()
 print('\nEntre com os elementos da Matriz B:\n')
 matriz_B = opera_matriz()
 print('\nAqui esta a Matriz A\n')
-matriz_A.mostra_matriz()
+matriz_A.m_estrutura()
 print('\nAqui esta a Matriz B\n')
-matriz_B.mostra_matriz()
+matriz_B.m_estrutura()
 print('\nM_A + M_B:\n')
+
 print(matriz_A.soma_matriz(matriz_B.retorna_matriz()))
