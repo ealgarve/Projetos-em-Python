@@ -50,7 +50,7 @@ class opera_matriz:
             m_soma.append(m_linha)
             m_linha = []
         
-        #return self.__class__() # m_soma
+        #return self.__class__()
         return m_soma
 
 print('Entre com os elementos da Matriz A:\n')
