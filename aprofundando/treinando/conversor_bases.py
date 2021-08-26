@@ -18,7 +18,8 @@ class conversor_base:
                 break
             # print(f'Dividendo: {dividendo}, divisor: {divisor}, quociente: {quociente} e resto: {resto}')
             dividendo = quociente
-        print(f'O núnero {decimal} e igual a {binario} em binario.')
+        #print(f'O núnero {decimal} e igual a {binario} em binario.')
+        return binario
 
     def dec_hex(self, num):
         hexadecimal = []
@@ -48,7 +49,8 @@ class conversor_base:
                 break
             # print(f'Dividendo: {dividendo}, divisor: {divisor}, quociente: {quociente} e resto: {resto}')
             dividendo = quociente
-        print(f'O núnero {num} e igual a {hexadecimal} em hexadecimal.')
+        #print(f'O núnero {num} e igual a {hexadecimal} em hexadecimal.')
+        return hexadecimal
 
     def bin_dec(self, bina):
         decimal = 0
@@ -56,7 +58,8 @@ class conversor_base:
         for i, e in enumerate(binario):
             decimal = decimal + e * 2**(i)
             #print(f'Elemento[{i}]: {e} * 2^{i}')
-        print(f'O número {bina} é igual a {decimal} em decimal.')
+        #print(f'O número {bina} é igual a {decimal} em decimal.')
+        return decimal
 
     def hex_dec(self, hexa):
         decimal = 0
@@ -78,10 +81,78 @@ class conversor_base:
                 pass
             decimal = decimal + e * 16**(i)
             #print(f'Elemento[{i}]: {e} * 2^{i}')
-        print(f'O número {hexa} é igual a {decimal} em decimal.')
+        #print(f'O número {hexa} é igual a {decimal} em decimal.')
+        return decimal
+
+    def hex_bin(self,hexa):
+        x = self.hex_dec(hexa)
+        return self.dec_bin(x)
+    
+    def bin_hex_(self, bin):
+        hex = []
+        print(f'Binário original: {bin}')
+        fatia = bin[-4:]
+        del bin[-4:]
+        print(f'Fatia: {fatia}')
+        print(f'Binário fatiado: {bin}')
+        #for i, e in enumerate(bin):
+            # fatiar os 4 últimos --> retirar da lista bin --> converter para Hexa --> acrescentar a lista
+            # repetir até terminar os elementos
+
+    def bin_hex(self, bin):
+        hex = []
+        for i in range(len(bin)):
+            fatia = bin[-4:]
+            while len(fatia) < 4:
+                fatia.insert(0, 0)
+            if fatia == [0, 0, 0, 0]:
+                fatia = 0
+            elif fatia == [0, 0, 0, 1]:
+                fatia = 1
+            elif fatia == [0, 0, 1, 0]:
+                fatia = 2
+            elif fatia == [0, 0, 1, 1]:
+                fatia = 3
+            elif fatia == [0, 1, 0, 0]:
+                fatia = 4
+            elif fatia == [0, 1, 0, 1]:
+                fatia = 5
+            elif fatia == [0, 1, 1, 0]:
+                fatia = 6
+            elif fatia == [0, 1, 1, 1]:
+                fatia = 7
+            elif fatia == [1, 0, 0, 0]:
+                fatia = 8
+            elif fatia == [1, 0, 0, 1]:
+                fatia = 9
+            elif fatia == [1, 0, 1, 0]:
+                fatia = 'A'
+            elif fatia == [1, 0, 1, 1]:
+                fatia = 'B'
+            elif fatia == [1, 1, 0, 0]:
+                fatia = 'C'
+            elif fatia == [1, 1, 0, 1]:
+                fatia = 'D'
+            elif fatia == [1, 1, 1, 0]:
+                fatia = 'E'
+            elif fatia == [1, 1, 1, 1]:
+                fatia = 'F'
+            else:
+                print('deu erro na conversão 4bits para hexa')
+            hex.insert(0, fatia)
+            del bin[-4:]
+            if bin == []:
+                break
+            
+        return hex
+        #print(f'Hex fatiado: {hex}')
+            
 
 conv = conversor_base()
-conv.dec_bin(42)
-conv.dec_hex(42)
-conv.bin_dec([1, 0, 1, 0, 1, 0])
-conv.hex_dec([2, 'A'])
+print(conv.dec_bin(42))
+print(conv.dec_hex(42))
+print(conv.hex_dec([2, 'A']))
+print(conv.hex_bin([2, 'A']))
+print(conv.bin_hex([1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0]))
+print(conv.bin_hex([1, 0, 1, 0, 1, 0]))
+print(conv.bin_dec([1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0]))
