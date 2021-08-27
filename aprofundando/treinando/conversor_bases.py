@@ -88,17 +88,6 @@ class conversor_base:
         x = self.hex_dec(hexa)
         return self.dec_bin(x)
     
-    def bin_hex_(self, bin):
-        hex = []
-        print(f'Binário original: {bin}')
-        fatia = bin[-4:]
-        del bin[-4:]
-        print(f'Fatia: {fatia}')
-        print(f'Binário fatiado: {bin}')
-        #for i, e in enumerate(bin):
-            # fatiar os 4 últimos --> retirar da lista bin --> converter para Hexa --> acrescentar a lista
-            # repetir até terminar os elementos
-
     def bin_hex(self, bin):
         hex = []
         for i in range(len(bin)):
