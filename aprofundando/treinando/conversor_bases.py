@@ -37,7 +37,7 @@ class conversor_base:
             else:
                 print('Opção inexistente. Tente novamente.')
         
-    def dec_bin(self, decimal): # entra decimal e sai binário
+    def dec_bin(self, decimal): # [1] decimal para binário
         binario = []
         divisor = 2
         decimal = int(decimal)
@@ -53,7 +53,7 @@ class conversor_base:
         print(f'O núnero {decimal} e igual a {binario} em binario.')
         # return binario
 
-    def dec_hex(self, num): # entra decimal e sai hexadecimal
+    def dec_hex(self, num): # [2] decimal para hexadecomal
         hexadecimal = []
         divisor = 16
         num = int(num)
@@ -84,16 +84,17 @@ class conversor_base:
         print(f'O núnero {num} e igual a {hexadecimal} em hexadecimal.')
         #return hexadecimal
 
-    def bin_dec(self, bina): # tem que ajeitar para receber e processar o binário
+    def bin_dec(self, bina): # [3] binário para decimal
         decimal = 0
-        binario = reversed(bina)
+        binario = reversed(self.int_bin(bina))
         for i, e in enumerate(binario):
             decimal = decimal + e * 2**(i)
             #print(f'Elemento[{i}]: {e} * 2^{i}')
         print(f'O número {bina} é igual a {decimal} em decimal.')
         #return decimal
 
-    def hex_dec(self, hexa):
+    def hex_dec(self, hexa): # [5] hexadecomal para decomal
+        
         decimal = 0
         hexadecimal = reversed(hexa)
         for i, e in enumerate(hexadecimal):
@@ -116,12 +117,13 @@ class conversor_base:
         print(f'O número {hexa} é igual a {decimal} em decimal.')
         #return decimal
 
-    def hex_bin(self,hexa):
+    def hex_bin(self,hexa): # [6] hexadecimal para binário
         x = self.hex_dec(hexa)
         self.dec_bin(x)
         #return self.dec_bin(x)
     
-    def bin_hex(self, bin):
+    def bin_hex(self, bina): # [4] binário para hexadecimal
+        bin = self.int_bin(bina)
         hex = []
         for i in range(len(bin)):
             fatia = bin[-4:]
@@ -167,8 +169,17 @@ class conversor_base:
                 break
             
         #return hex
-        print(f'O número {bin} é igual a {hex} em decimal.')
+        print(f'O número {bina} é igual a {hex} em decimal.')
             
+    def int_bin(self, inteiro):
+        fatiado = []
+        lista = list(str(inteiro))
+        for i in range(len(lista)):
+            print(lista[i])
+            fatiado.append(int(lista[i]))
+        return fatiado
+
+
 
 conv = conversor_base()
 '''print(conv.dec_bin(42))
