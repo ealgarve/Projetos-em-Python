@@ -15,23 +15,23 @@ class conversor_base:
             print('[S] Sair')
             opcao = str(input('Digite a opção desejada: '))
             if opcao == '1':
-                num = int(input('Digite o número a ser convertido:'))
-                self.dec_bin(num)
+                num = int(input('Digite o número a ser convertido: ').upper())
+                print(f'O núnero {num} e igual a {self.dec_bin(num)} em binario.')
             elif opcao == '2':
-                num = int(input('Digite o número a ser convertido:'))
-                self.dec_hex(num)
+                num = int(input('Digite o número a ser convertido: ').upper())
+                print(f'O núnero {num} e igual a {self.dec_hex(num)} em hexadecimal.')
             elif opcao == '3':
-                num = int(input('Digite o número a ser convertido:'))
-                self.bin_dec(num)
+                num = int(input('Digite o número a ser convertido: ').upper())
+                print(f'O número {num} é igual a {self.bin_dec(num)} em decimal.')
             elif opcao == '4':
-                num = int(input('Digite o número a ser convertido:'))
-                self.bin_hex(num)
+                num = int(input('Digite o número a ser convertido: ').upper())
+                print(f'O número {num} é igual a {self.bin_hex(num)} em decimal.')
             elif opcao == '5':
-                num = int(input('Digite o número a ser convertido:'))
-                self.hex_dec(num)
+                num = str(input('Digite o número a ser convertido: ').upper())
+                print(f'O número {num} é igual a {self.hex_dec(num)} em decimal.')
             elif opcao == '6':
-                num = int(input('Digite o número a ser convertido:'))
-                self.hex_bin(num)
+                num = str(input('Digite o número a ser convertido: ').upper())
+                print(f'O número {num} é igual a {self.hex_bin(num)} em binário.')
             elif opcao in 'sS':
                 break
             else:
@@ -48,10 +48,8 @@ class conversor_base:
             binario.insert(0,resto)
             if quociente == 0:
                 break
-            # print(f'Dividendo: {dividendo}, divisor: {divisor}, quociente: {quociente} e resto: {resto}')
             dividendo = quociente
-        print(f'O núnero {decimal} e igual a {binario} em binario.')
-        # return binario
+        return binario
 
     def dec_hex(self, num): # [2] decimal para hexadecomal
         hexadecimal = []
@@ -79,24 +77,20 @@ class conversor_base:
             hexadecimal.insert(0,resto)
             if quociente == 0:
                 break
-            # print(f'Dividendo: {dividendo}, divisor: {divisor}, quociente: {quociente} e resto: {resto}')
             dividendo = quociente
-        print(f'O núnero {num} e igual a {hexadecimal} em hexadecimal.')
-        #return hexadecimal
+        return hexadecimal
 
     def bin_dec(self, bina): # [3] binário para decimal
         decimal = 0
         binario = reversed(self.int_bin(bina))
         for i, e in enumerate(binario):
             decimal = decimal + e * 2**(i)
-            #print(f'Elemento[{i}]: {e} * 2^{i}')
-        print(f'O número {bina} é igual a {decimal} em decimal.')
-        #return decimal
+        return decimal
 
     def hex_dec(self, hexa): # [5] hexadecomal para decomal
         
         decimal = 0
-        hexadecimal = reversed(hexa)
+        hexadecimal = reversed(self.str_hex(hexa))
         for i, e in enumerate(hexadecimal):
             if e == 'A':
                 e = 10
@@ -110,17 +104,17 @@ class conversor_base:
                 e = 14
             elif e == 'F':
                 e = 15
+            elif e in '0123456789':
+                e = int(e)
             else:
                 pass
             decimal = decimal + e * 16**(i)
-            #print(f'Elemento[{i}]: {e} * 2^{i}')
-        print(f'O número {hexa} é igual a {decimal} em decimal.')
-        #return decimal
+        return decimal
 
     def hex_bin(self,hexa): # [6] hexadecimal para binário
         x = self.hex_dec(hexa)
-        self.dec_bin(x)
-        #return self.dec_bin(x)
+        y = self.dec_bin(x)
+        return y
     
     def bin_hex(self, bina): # [4] binário para hexadecimal
         bin = self.int_bin(bina)
@@ -168,24 +162,21 @@ class conversor_base:
             if bin == []:
                 break
             
-        #return hex
-        print(f'O número {bina} é igual a {hex} em decimal.')
+        return hex
             
     def int_bin(self, inteiro):
         fatiado = []
         lista = list(str(inteiro))
         for i in range(len(lista)):
-            print(lista[i])
             fatiado.append(int(lista[i]))
         return fatiado
 
+    def str_hex(self, hex):
+        fatiado = []
+        lista = list(str(hex))
+        for i in range(len(lista)):
+            fatiado.append(str(lista[i]))
+        return fatiado
 
 
 conv = conversor_base()
-'''print(conv.dec_bin(42))
-print(conv.dec_hex(42))
-print(conv.hex_dec([2, 'A']))
-print(conv.hex_bin([2, 'A']))
-print(conv.bin_hex([1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0]))
-print(conv.bin_hex([1, 0, 1, 0, 1, 0]))
-print(conv.bin_dec([1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0]))'''
