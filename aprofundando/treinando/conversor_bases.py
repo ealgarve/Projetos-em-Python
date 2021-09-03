@@ -15,8 +15,7 @@ class conversor_base:
             print('[S] Sair')
             opcao = str(input('Digite a opção desejada: '))
             if opcao == '1':
-                num = int(input('Digite o número a ser convertido: ').upper())
-                print(f'O núnero {num} e igual a {self.dec_bin(num)} em binario.')
+                self.get_num()
             elif opcao == '2':
                 num = int(input('Digite o número a ser convertido: ').upper())
                 print(f'O núnero {num} e igual a {self.dec_hex(num)} em hexadecimal.')
@@ -36,6 +35,10 @@ class conversor_base:
                 break
             else:
                 print('Opção inexistente. Tente novamente.')
+
+    def get_num(self):
+        num = int(input('Digite o número a ser convertido: ').upper())
+        print(f'O núnero {num} e igual a {self.dec_bin(num)} em binario.')
         
     def dec_bin(self, decimal): # [1] decimal para binário
         binario = []
@@ -50,7 +53,7 @@ class conversor_base:
                 break
             dividendo = quociente
         
-        return binario
+        return self.agrupa_4(binario)
 
     def dec_hex(self, num): # [2] decimal para hexadecomal
         hexadecimal = []
@@ -179,24 +182,22 @@ class conversor_base:
             fatiado.append(str(lista[i]))
         return fatiado
 
+    def agrupa_4(self, bin):
+        separado = []
+        lista = bin # [1, 2, 3, 4, 5, 6] #, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        while len(lista) > 0:
+            fatia = lista[-4:]
+            while len(fatia) < 4:
+                fatia.insert(0, 0)
+            separado.insert(0, fatia)
+            del lista[-4:]
+        #print(separado)   
+        #while len(separado) > 0:
+        for i, e in enumerate(separado):
+            for j, c in enumerate(separado[i]):
+                print(f'Elemento {i+1}, {j+1} = {c}')
+        #print(separado)
+        #print(f'Elemento [{i+1}, {j}]: {separado[1][2]}') 
+        return se
 
-#conv = conversor_base()
-
-def agrupa4():
-    separado = []
-    lista = [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-    while len(lista) > 0:
-        fatia = lista[-4:]
-        while len(fatia) < 4:
-            fatia.insert(0, 0)
-        separado.insert(0, fatia)
-        del lista[-4:]
-    print(separado)   
-    print(f'Elemento: {separado[3][2]}') 
-    #while len(separado) > 0:
-    for i, e in enumerate(separado):
-        for j, c in enumerate(separado[i]):
-            print(f'Elemento {i}, {j} = {c}')
-    print(separado)
-
-agrupa4()
+conv = conversor_base()
