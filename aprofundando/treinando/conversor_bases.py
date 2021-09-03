@@ -49,6 +49,7 @@ class conversor_base:
             if quociente == 0:
                 break
             dividendo = quociente
+        
         return binario
 
     def dec_hex(self, num): # [2] decimal para hexadecomal
@@ -179,4 +180,23 @@ class conversor_base:
         return fatiado
 
 
-conv = conversor_base()
+#conv = conversor_base()
+
+def agrupa4():
+    separado = []
+    lista = [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    while len(lista) > 0:
+        fatia = lista[-4:]
+        while len(fatia) < 4:
+            fatia.insert(0, 0)
+        separado.insert(0, fatia)
+        del lista[-4:]
+    print(separado)   
+    print(f'Elemento: {separado[3][2]}') 
+    #while len(separado) > 0:
+    for i, e in enumerate(separado):
+        for j, c in enumerate(separado[i]):
+            print(f'Elemento {i}, {j} = {c}')
+    print(separado)
+
+agrupa4()
